@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="Space LumberJack"
+run/main_scene="uid://bnh03kpl22lv6"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1000
+window/handheld/orientation=1
 
 [rendering]
 

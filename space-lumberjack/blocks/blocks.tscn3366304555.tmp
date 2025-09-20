@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://j75v7cfbiiuj"]
+
+[ext_resource type="Script" uid="uid://uc4xp6ov62mq" path="res://blocks/blocks.gd" id="1_sxqjp"]
+[ext_resource type="Texture2D" uid="uid://b3b532a3u3n51" path="res://assets/Blocks/Block 5.png" id="2_5fqy4"]
+[ext_resource type="Texture2D" uid="uid://hvtgk4nwkdkc" path="res://assets/Blocks/Block 1.png" id="3_7essg"]
+
+[node name="Blocks" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_sxqjp")
+
+[node name="Spine" type="Sprite2D" parent="."]
+texture = ExtResource("2_5fqy4")
+metadata/_edit_lock_ = true
+
+[node name="Left" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1117, 0)
+texture = ExtResource("3_7essg")
+metadata/_edit_lock_ = true
+
+[node name="Right" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1117, 0)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_7essg")
+metadata/_edit_lock_ = true
