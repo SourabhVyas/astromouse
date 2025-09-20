@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnh03kpl22lv6"]
+[gd_scene load_steps=4 format=3 uid="uid://bnh03kpl22lv6"]
 
 [ext_resource type="Script" uid="uid://dqyqbs0emvxtv" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://p5srj32qnoch" path="res://assets/Backgrounds/space/Stars Small_1.png" id="2_lquwl"]
-[ext_resource type="Texture2D" uid="uid://cjlgmxy1asbw4" path="res://assets/Deco/Planet 2.png" id="3_h2yge"]
-[ext_resource type="Texture2D" uid="uid://cked0e0oyjr3u" path="res://assets/Deco/Planet 3.png" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://ghxr484lkuge" path="res://character/spaceship.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
@@ -23,7 +21,7 @@ centered = false
 
 [node name="Player" parent="." instance=ExtResource("5_lquwl")]
 position = Vector2(527, 579)
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.24, 0.24)
 
 [node name="Pipe" type="Node2D" parent="."]
 position = Vector2(0, 730)
@@ -31,30 +29,9 @@ position = Vector2(0, 730)
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 223.0
+offset_bottom = 106.0
 
 [node name="GameOverLabel" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
-
-[node name="LeftButton" type="TextureButton" parent="."]
-offset_left = 102.0
-offset_top = 781.0
-offset_right = 1911.0
-offset_bottom = 2590.0
-scale = Vector2(0.1, 0.1)
-texture_normal = ExtResource("3_h2yge")
-stretch_mode = 0
-
-[node name="RightButton" type="TextureButton" parent="."]
-offset_left = 461.0
-offset_top = 759.0
-offset_right = 4741.0
-offset_bottom = 5039.0
-scale = Vector2(0.045, 0.045)
-texture_normal = ExtResource("4_1bvp3")
-stretch_mode = 0
-
-[connection signal="button_down" from="LeftButton" to="." method="_on_left_button_button_down"]
-[connection signal="button_down" from="RightButton" to="." method="_on_right_button_button_down"]

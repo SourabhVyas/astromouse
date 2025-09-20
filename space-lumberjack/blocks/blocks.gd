@@ -6,7 +6,6 @@ func _ready() -> void:
 	$Right.visible = branchSide == 1
 
 func get_height():
-	print($Spine.scale.y)
 	return $Spine.texture.get_height() * scale.y
 
 func get_width():
