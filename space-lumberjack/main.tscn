@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnh03kpl22lv6"]
+[gd_scene load_steps=6 format=3 uid="uid://bnh03kpl22lv6"]
 
 [ext_resource type="Script" uid="uid://dqyqbs0emvxtv" path="res://main.gd" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://p5srj32qnoch" path="res://assets/Backgrounds/space/Stars Small_1.png" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://kfwylm740a0p" path="res://assets/Backgrounds/moon.PNG" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://452jka0oqfru" path="res://assets/Backgrounds/galaxy.jpg" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cxm7a11m7l0ng" path="res://assets/Backgrounds/red_moon.PNG" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://ghxr484lkuge" path="res://character/spaceship.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node2D"]
@@ -9,14 +11,28 @@ script = ExtResource("1_ig7tw")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_repeat = 2
-motion_mirroring = Vector2(0, 1638.4)
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 4000)
 
-[node name="Space" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture_repeat = 2
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_lquwl")
+[node name="Moon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(245, 289)
+texture = ExtResource("2_1bvp3")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 3000)
+
+[node name="Red_Moon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(703, 1196)
+texture = ExtResource("3_lquwl")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 981.85)
+
+[node name="Galaxy" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+modulate = Color(1, 1, 1, 0.592157)
+texture_filter = 1
+scale = Vector2(1, 1.17702)
+texture = ExtResource("3_1bvp3")
 centered = false
 
 [node name="Player" parent="." instance=ExtResource("5_lquwl")]
@@ -24,7 +40,7 @@ position = Vector2(527, 579)
 scale = Vector2(0.24, 0.24)
 
 [node name="Pipe" type="Node2D" parent="."]
-position = Vector2(0, 730)
+position = Vector2(0, 581)
 
 [node name="Timer" type="Timer" parent="."]
 

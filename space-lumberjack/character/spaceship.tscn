@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ghxr484lkuge"]
+[gd_scene load_steps=23 format=3 uid="uid://ghxr484lkuge"]
 
 [ext_resource type="Texture2D" uid="uid://b4vu1rw2ydp2q" path="res://assets/Spaceships/Graphics Asset - Spaceships/PNG/Spaceships/01/Spaceship_01_GREEN.png" id="1_lkvn3"]
 [ext_resource type="Script" uid="uid://r1sbnlls62ru" path="res://character/spaceship.gd" id="1_pc3ws"]
@@ -19,6 +19,17 @@
 [ext_resource type="Texture2D" uid="uid://c4ctrb851ii3j" path="res://assets/Spaceships/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_GREEN.png" id="16_0dtb0"]
 [ext_resource type="Texture2D" uid="uid://c12pvlta8hrv6" path="res://assets/Spaceships/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_YELLOW.png" id="17_wtlrt"]
 [ext_resource type="Texture2D" uid="uid://cxseb268h0dus" path="res://assets/Spaceships/Graphics Asset - Spaceships/PNG/Spaceships/06/Spaceship_06_RED.png" id="18_0k3hc"]
+
+[sub_resource type="Curve" id="Curve_pc3ws"]
+_data = [Vector2(0, 0.992904), 0.0, 0.0, 0, 0, Vector2(0.115274, 0.896591), 0.0, 0.0, 0, 0, Vector2(0.239193, 0.793182), 0.0, 0.0, 0, 0, Vector2(0.365994, 0.675), 0.0, 0.0, 0, 0, Vector2(0.463977, 0.475568), 0.0, 0.0, 0, 0, Vector2(0.67147, 0.490341), 0.0, 0.0, 0, 0, Vector2(0.746398, 0.246591), 0.0, 0.0, 0, 0, Vector2(0.870317, 0.224432), 0.0, 0.0, 0, 0, Vector2(0.988473, 0.157955), 0.0, 0.0, 0, 0, Vector2(1, 0.150568), 0.0, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="Gradient" id="Gradient_pc3ws"]
+offsets = PackedFloat32Array(0, 0.14377)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_roacv"]
+gradient = SubResource("Gradient_pc3ws")
+fill = 1
 
 [node name="Spaceship" type="Node2D"]
 script = ExtResource("1_pc3ws")
@@ -88,3 +99,14 @@ texture = ExtResource("17_wtlrt")
 
 [node name="Red" type="Sprite2D" parent="Level6"]
 texture = ExtResource("18_0k3hc")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-3, 120, 0, 159, 2, 202)
+width = 50.0
+width_curve = SubResource("Curve_pc3ws")
+default_color = Color(0.0823529, 1, 1, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 2.05
+texture = SubResource("GradientTexture2D_roacv")
+texture_scale = 6.16

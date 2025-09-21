@@ -11,17 +11,38 @@ var centerX: float
 var blockHeight: float = 0
 var blockWidth: float = 0
 
-var playerExtraOffset: float = 30.0
+var playerExtraOffset: float = 53.0
 var switchLen: float = 0.0
+
+
+var clickToLevel: Array = [0, 100, 210, 320, 430, 540, 650]
+var fuelDecay: Array = [0, 0.1, 0.2, 0.25, 0.3, 0.3, 0.4]
+var fuelAdd: float = 0.04
+var backgroundScrollSpeed: Array = [0,1,2,3,4,5,6]
+
+var SCORE: int = 0
 
 func _ready() -> void:
 	initialize_center_x()
 	randomize()
 	initialize_pipe_branches(10)
 	initialize_initial_blocks()
-
 	$Player.calculate_player_width()
 	set_initial_player_position()
+
+func _process(delta: float) -> void:
+	if $Player.fuel <= 0:
+		game_over()
+		return
+	if SCORE > 0:
+		$Player.fuel -= fuelDecay[$Player.level]*delta
+	$Player.update_sprites()
+	$Label.text = str($Player.level) + " " + str($Player.fuel) + " " + str(SCORE)
+
+func game_over() -> void:
+	print("Game Over")
+	return
+
 
 func set_initial_player_position() -> void:
 	switchLen = blockWidth * 0.5 + playerExtraOffset + $Player.playerWidth * 0.5
@@ -51,17 +72,23 @@ func _handle_screen_press(pos: Vector2) -> void:
 
 func handle_left_input() -> void:
 	playerChoice = 0
+	if check_hit(): return
 	if playerPos == 1:
 		$Player.position.x -= switchLen * 2
 		playerPos = 0
-	check_hit()
+
 
 func handle_right_input() -> void:
 	playerChoice = 1
+	if check_hit(): return
 	if playerPos == 0:
 		$Player.position.x += switchLen * 2
 		playerPos = 1
-	check_hit()
+
+func update_level_fuel() -> void:
+	if SCORE == clickToLevel[$Player.level]:
+		$Player.level = min($Player.level + 1, 6)
+	$Player.fuel = min(1, $Player.fuel + fuelAdd)
 
 func initialize_center_x() -> void:
 	centerX = get_viewport().get_visible_rect().size.x * 0.5
@@ -89,12 +116,12 @@ func create_and_add_block(rowIndex: int, branchSide: int) -> void:
 	$Pipe.add_child(block)
 
 func update_pipe() -> void:
-	$Player.update_sprites()
 	append_pipe_branch()
-	remove_oldest_block()
+	if len(pipe) > 15:
+		remove_oldest_block()
 	move_blocks_down()
 	add_newest_block()
-	$ParallaxBackground.scroll_offset.y += 10
+	$ParallaxBackground.scroll_offset.y += backgroundScrollSpeed[$Player.level]
 
 func add_newest_block() -> void:
 	var row_index = VISIBLE_BLOCK_COUNT - 1
@@ -108,10 +135,13 @@ func move_blocks_down() -> void:
 	for blk in $Pipe.get_children():
 		blk.global_position.y += blockHeight
 
-func check_hit() -> void:
+func check_hit() -> bool:
 	var nxt_block = pipe[1]
+	if nxt_block == playerChoice or $Player.fuel <= 0:
+		game_over()
+		return true
 	pipe.pop_front()
-	$Label.text = str("left" if nxt_block == 0 else "right")
-	if nxt_block == playerChoice:
-		print("death")
 	update_pipe()
+	SCORE += 1
+	update_level_fuel()
+	return false

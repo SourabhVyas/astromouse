@@ -31,9 +31,9 @@ func get_level_node(levelIndex: int) -> Node2D:
 	return get_node_or_null("Level%d" % levelIndex)
 
 func decide_sprite_color() -> String:
-	if fuel < 3.33:
+	if fuel < 0.33:
 		return "Red"
-	elif fuel < 6.66:
+	elif fuel < 0.66:
 		return "Yellow"
 	return "Green"
 
@@ -48,3 +48,10 @@ func calculate_player_width() -> void:
 		playerWidth = tex_size.x * sprite_node.scale.x
 	else:
 		playerWidth = 0.0
+		
+
+@export var min_alpha := 0.5
+@export var max_alpha := 1.0
+
+func _process(delta: float) -> void:
+	$Line2D.modulate.a = (randf_range(min_alpha, max_alpha) + fuel)/2
