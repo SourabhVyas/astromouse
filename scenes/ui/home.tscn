@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://dct7sn52l3r82"]
+
+[ext_resource type="Script" uid="uid://bq72phd5oen37" path="res://scripts/ui/home.gd" id="1_tt30a"]
+[ext_resource type="FontFile" uid="uid://de6ewy67fandh" path="res://assets/UI/monogram.ttf" id="2_2ayvv"]
+[ext_resource type="Resource" uid="uid://ble1dnahrbyls" path="res://resources/video_collection.tres" id="2_qq0qw"]
+[ext_resource type="Texture2D" uid="uid://ddr3a4fqw3q32" path="res://assets/Screenshot 2026-04-25 125110.png" id="5_w1mvj"]
+[ext_resource type="AudioStream" uid="uid://cuiwkvxxe5s61" path="res://assets/sounds/834223__loudkevin__intermission.mp3" id="6_lxycn"]
+[ext_resource type="FontFile" uid="uid://dfui8dgr1uvq2" path="res://assets/UI/Kaph_Font_1_20/TrueType (.ttf)/Kaph-Italic.ttf" id="6_vqw7c"]
+[ext_resource type="VideoStream" uid="uid://cjwr4xch86nr3" path="res://assets/toby/normal.ogv" id="8_86xni"]
+
+[node name="Home" type="Node2D" unique_id=1778062350]
+script = ExtResource("1_tt30a")
+my_videos = ExtResource("2_qq0qw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=320793852]
+stream = ExtResource("6_lxycn")
+volume_db = -6.568
+autoplay = true
+mix_target = 1
+max_polyphony = 3
+playback_type = 1
+parameters/looping = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=168992202]
+position = Vector2(360.49997, 512.99994)
+scale = Vector2(8.292452, 24.217394)
+texture = ExtResource("5_w1mvj")
+
+[node name="left_player" type="VideoStreamPlayer" parent="." unique_id=1823388384]
+offset_left = 98.0
+offset_top = 406.0
+offset_right = 271.0
+offset_bottom = 590.0
+stream = ExtResource("8_86xni")
+autoplay = true
+expand = true
+loop = true
+
+[node name="Label" type="Label" parent="." unique_id=647309809]
+offset_left = 2.0
+offset_top = 30.0
+offset_right = 718.0
+offset_bottom = 237.0
+theme_override_colors/font_color = Color(0.82353926, 0.20210579, 0.8429211, 1)
+theme_override_fonts/font = ExtResource("6_vqw7c")
+theme_override_font_sizes/font_size = 72
+text = "You
+Tried
+..."
+horizontal_alignment = 1
+
+[node name="GameOver" type="Label" parent="." unique_id=1162633119]
+modulate = Color(0.078431375, 0.34901962, 1, 1)
+offset_left = 5.0
+offset_top = 267.0
+offset_right = 721.0
+offset_bottom = 422.0
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.99956, 0.883501, 0.802085, 1)
+theme_override_fonts/font = ExtResource("2_2ayvv")
+theme_override_font_sizes/font_size = 96
+text = "Game Over
+"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="." unique_id=955084517]
+modulate = Color(1, 0.29803923, 0, 1)
+offset_left = -1.0
+offset_top = 417.0
+offset_right = 718.0
+offset_bottom = 574.0
+theme_override_colors/font_color = Color(0.99956, 0.883501, 0.802085, 1)
+theme_override_fonts/font = ExtResource("2_2ayvv")
+theme_override_font_sizes/font_size = 96
+text = "10"
+horizontal_alignment = 1
+
+[node name="Replay" type="Label" parent="." unique_id=1053600720]
+modulate = Color(1, 0.019607844, 1, 1)
+offset_left = 1.0
+offset_top = 629.0
+offset_right = 717.0
+offset_bottom = 784.0
+theme_override_colors/font_color = Color(0.99956, 0.883501, 0.802085, 1)
+theme_override_fonts/font = ExtResource("2_2ayvv")
+theme_override_font_sizes/font_size = 96
+text = "REPLAY"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Replay" unique_id=1179236500]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -73.5
+offset_right = 126.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="Replay/Button" to="." method="_on_button_button_down"]
+[connection signal="mouse_entered" from="Replay/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Replay/Button" to="." method="_on_button_mouse_exited"]

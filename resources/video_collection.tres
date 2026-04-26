@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="VideoCollection" format=3 uid="uid://ble1dnahrbyls"]
+
+[ext_resource type="VideoStream" uid="uid://bwh3b7jsiwedo" path="res://assets/toby/close.ogv" id="1_mcw2y"]
+[ext_resource type="Script" uid="uid://csnj8acgi24be" path="res://scripts/data/video_collection.gd" id="1_y1rq6"]
+[ext_resource type="VideoStream" uid="uid://6l4trnpkiuqj" path="res://assets/toby/high_score.ogv" id="2_mcw2y"]
+[ext_resource type="VideoStream" uid="uid://cjwr4xch86nr3" path="res://assets/toby/normal.ogv" id="3_6wl2i"]
+[ext_resource type="VideoStream" uid="uid://bhhf5vtbivagp" path="res://assets/toby/sad_score.ogv" id="4_qi2kg"]
+
+[resource]
+script = ExtResource("1_y1rq6")
+close = ExtResource("1_mcw2y")
+high_score = ExtResource("2_mcw2y")
+sad_score = ExtResource("4_qi2kg")
+normal = ExtResource("3_6wl2i")
+metadata/_custom_type_script = "uid://csnj8acgi24be"

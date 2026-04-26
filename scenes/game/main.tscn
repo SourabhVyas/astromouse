@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://bnh03kpl22lv6"]
+
+[ext_resource type="Script" uid="uid://dqyqbs0emvxtv" path="res://scripts/game/main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://kfwylm740a0p" path="res://assets/Backgrounds/moon.PNG" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://452jka0oqfru" path="res://assets/Backgrounds/galaxy.jpg" id="3_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://cxm7a11m7l0ng" path="res://assets/Backgrounds/red_moon.PNG" id="3_lquwl"]
+[ext_resource type="PackedScene" uid="uid://ghxr484lkuge" path="res://scenes/entities/astromouse.tscn" id="5_lquwl"]
+[ext_resource type="Texture2D" uid="uid://bg41eljnc3aet" path="res://assets/Backgrounds/cateroid.png" id="6_7mycd"]
+[ext_resource type="AudioStream" uid="uid://sqnlc6dahhtl" path="res://assets/sounds/level_music.wav" id="7_272bh"]
+[ext_resource type="AudioStream" uid="uid://ddv7ulj4cvf1s" path="res://assets/sounds/move.wav" id="8_5vw27"]
+[ext_resource type="AudioStream" uid="uid://c6de6awqdl0yj" path="res://assets/sounds/Goofy_Holler_1.ogg" id="9_kek77"]
+
+[node name="Main" type="Node2D" unique_id=784680161]
+script = ExtResource("1_ig7tw")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=9142703]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1439745079]
+motion_mirroring = Vector2(0, 4000)
+
+[node name="Moon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=530703943]
+position = Vector2(245, 289)
+texture = ExtResource("2_1bvp3")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=376077656]
+motion_mirroring = Vector2(0, 3000)
+
+[node name="Red_Moon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=901443669]
+position = Vector2(703, 1196)
+texture = ExtResource("3_lquwl")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1015070037]
+motion_mirroring = Vector2(0, 981.85)
+
+[node name="Galaxy" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=686533017]
+modulate = Color(1, 1, 1, 0.592157)
+texture_filter = 1
+scale = Vector2(1, 1.17702)
+texture = ExtResource("3_1bvp3")
+centered = false
+
+[node name="Player" parent="." unique_id=278651925 instance=ExtResource("5_lquwl")]
+z_index = 2
+position = Vector2(513, 540)
+
+[node name="Pipe" type="Node2D" parent="." unique_id=401353887]
+position = Vector2(0, 581)
+
+[node name="Timer" type="Timer" parent="." unique_id=1294688126]
+
+[node name="Cateroid" type="Sprite2D" parent="." unique_id=406569142]
+position = Vector2(112, 662)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_7mycd")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=164728716]
+position = Vector2(382, 855)
+metadata/_edit_lock_ = true
+
+[node name="Level Sound" type="AudioStreamPlayer" parent="." unique_id=2041743106]
+stream = ExtResource("7_272bh")
+volume_db = -17.554
+autoplay = true
+mix_target = 1
+max_polyphony = 3
+playback_type = 1
+
+[node name="Action" type="AudioStreamPlayer" parent="." unique_id=68018120]
+stream = ExtResource("8_5vw27")
+volume_db = -16.479
+
+[node name="Last Yell" type="AudioStreamPlayer" parent="." unique_id=1941972624]
+stream = ExtResource("9_kek77")
+volume_db = -14.083
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=479002853]
+offset_right = 204.0
+offset_bottom = 102.0
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer" unique_id=1242549431]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/GridContainer" unique_id=2123052055]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8583234, 0.9746198, 0.9979258, 1)
+max_value = 1.0
+
+[node name="Score" type="Label" parent="PanelContainer/GridContainer" unique_id=510786738]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+text = "Score"
+horizontal_alignment = 1
