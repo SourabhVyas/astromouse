@@ -24,6 +24,6 @@ Gameplay is similar to Lumberjack.
 
 
 ### Score screen
-a) https://tenor.com/view/meong-cat-laugh-rofl-discord-gif-3606059059512308753
-b) https://tenor.com/view/rascal-almost-there-gif-21800539
-c) https://tenor.com/view/confetti-cute-celebration-celebrate-colorful-gif-17762369
+- https://tenor.com/view/meong-cat-laugh-rofl-discord-gif-3606059059512308753
+- https://tenor.com/view/rascal-almost-there-gif-21800539
+- https://tenor.com/view/confetti-cute-celebration-celebrate-colorful-gif-17762369
