@@ -21,3 +21,9 @@ Gameplay is similar to Lumberjack.
 ### Sprites
 
 - Asset Pack: https://laplas-games-inc.itch.io/asset-pack
+
+
+### Score screen
+a) https://tenor.com/view/meong-cat-laugh-rofl-discord-gif-3606059059512308753
+b) https://tenor.com/view/rascal-almost-there-gif-21800539
+c) https://tenor.com/view/confetti-cute-celebration-celebrate-colorful-gif-17762369
