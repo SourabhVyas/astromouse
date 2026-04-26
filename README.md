@@ -1,6 +1,6 @@
 # Astromouse
 
-This is a small game made in Godot.
+This is a small game made in Godot. It is available at https://sourabhvyas.github.io/astromouse/
 
 ## Controls
 
