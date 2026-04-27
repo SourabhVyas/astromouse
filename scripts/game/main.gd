@@ -22,6 +22,8 @@ var over: bool = false
 
 var move_sound: AudioStreamPlayer
 
+var highscoreAnimPlayed: bool = false
+
 
 func _ready() -> void:
 	initialize_center_x()
@@ -34,6 +36,28 @@ func _ready() -> void:
 	move_sound = $Action
 
 
+
+func play_highscore_animation() -> void:
+	var label = $PanelContainer/GridContainer/Score
+	label.pivot_offset = label.size / 2.0
+
+	var tween = create_tween()
+	tween.tween_property(label, "scale", Vector2(2, 2), 0.1).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(label, "rotation_degrees",  8.0, 0.05)
+	tween.tween_property(label, "rotation_degrees", -8.0, 0.05)
+	tween.tween_property(label, "rotation_degrees",  8.0, 0.05)
+	tween.tween_property(label, "rotation_degrees",  0.0, 0.05)
+	tween.tween_property(label, "scale", Vector2(1, 1), 0.2).set_trans(Tween.TRANS_BOUNCE)
+
+func update_hud() -> void:
+	$PanelContainer/GridContainer/ProgressBar.value = $Player.fuel
+	$PanelContainer/GridContainer/Score.text        = str(GLOBAL.SCORE)
+
+	if GLOBAL.SCORE >= GLOBAL.HIGHSCORE and not highscoreAnimPlayed:
+		highscoreAnimPlayed = true
+		play_highscore_animation()
+		
+		
 func _process(delta: float) -> void:
 	if $Player.fuel <= 0:
 		game_over()
@@ -41,7 +65,8 @@ func _process(delta: float) -> void:
 
 	if GLOBAL.SCORE > 0:
 		$Player.fuel -= fuelDecay[$Player.level] * delta
-
+	
+	update_hud()
 	$PanelContainer/GridContainer/ProgressBar.value = $Player.fuel
 	$PanelContainer/GridContainer/Score.text = str(GLOBAL.SCORE)
 

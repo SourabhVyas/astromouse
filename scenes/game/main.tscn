@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://sqnlc6dahhtl" path="res://assets/sounds/level_music.wav" id="7_272bh"]
 [ext_resource type="AudioStream" uid="uid://ddv7ulj4cvf1s" path="res://assets/sounds/move.wav" id="8_5vw27"]
 [ext_resource type="AudioStream" uid="uid://c6de6awqdl0yj" path="res://assets/sounds/Goofy_Holler_1.ogg" id="9_kek77"]
+[ext_resource type="FontFile" uid="uid://chqbqurrxxt" path="res://assets/UI/Kaph_Font_1_20/Web Open Font Format (.woff)/Kaph-Regular.woff" id="10_mkoeh"]
 
 [node name="Main" type="Node2D" unique_id=784680161]
 script = ExtResource("1_ig7tw")
@@ -76,8 +77,8 @@ stream = ExtResource("9_kek77")
 volume_db = -14.083
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=479002853]
-offset_right = 204.0
-offset_bottom = 102.0
+offset_right = 240.0
+offset_bottom = 151.0
 
 [node name="GridContainer" type="GridContainer" parent="PanelContainer" unique_id=1242549431]
 layout_mode = 2
@@ -91,5 +92,7 @@ max_value = 1.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
-text = "Score"
+theme_override_fonts/font = ExtResource("10_mkoeh")
+theme_override_font_sizes/font_size = 50
+text = "10"
 horizontal_alignment = 1
